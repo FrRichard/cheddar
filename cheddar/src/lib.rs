@@ -9,6 +9,7 @@
 /// an external contract, a farm for example, to be able to mint tokens
 /// - Ultra-Lazy ft-metadata: ft-metadata is not stored unless changed
 ///
+use storage::{AccBalance};
 use near_contract_standards::fungible_token::{
     core::FungibleTokenCore,
     metadata::{FungibleTokenMetadata, FungibleTokenMetadataProvider, FT_METADATA_SPEC},
@@ -44,7 +45,7 @@ use vesting::{VestingRecord, VestingRecordJSON};
 pub struct Contract {
     metadata: LazyOption<FungibleTokenMetadata>,
 
-    pub accounts: LookupMap<AccountId, storage::AccBalance>,
+    pub accounts: LookupMap<AccountId, AccBalance>,
     pub owner_id: AccountId,
     pub minters: Vec<AccountId>,
     pub total_supply: Balance,
